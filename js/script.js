@@ -11,47 +11,60 @@ const images = [
 
 //prendiamo il contenitore dove inserire le immagini
 const itemsWrap = document.querySelector('.items-wrapper')
-
 //prendiamo i bottoni in html
 const btnNext = document.querySelector('.next')
 const btnPre = document.querySelector('.pre')
 //creiamo un contatore per le immagini
-let imageCount = 4
-console.log(imageCount);
+let imageCount = 0
+
+
+
 
 //creiamo un ciclo per stampare le imagini in html
 for(let i = 0; i < images.length; i++){
-//salviamo il ciclo in una const
+    //salviamo il ciclo in una const
     const imgSlide = images[i]
-    console.log(imgSlide);
-//stampiamo in html
-itemsWrap.innerHTML += `
-<img class="hide" src="${imgSlide}">
-`   
+    //stampiamo in html
+    itemsWrap.innerHTML += `
+    <img class="item hide" src="${imgSlide}">
+    `   
 }
 
 
 
+
 //seleziono tutte le immagini con la classe 'hide'
-const noHide = document.getElementsByClassName('hide')
-console.log(noHide)
-//tolgo la classe hide a tutte le immagini
-noHide[imageCount].classList.remove('hide')
+const items = document.getElementsByClassName('item')
+//tolgo la classe hide alla prima immagine
+items[imageCount].classList.remove('hide')
 
-
-
-//aggiungiamo le function ai bottoni
-btnNext.addEventListener('click', function(){
-    noHide[imageCount].classList.add('hide')
-    console.log(btnNext);
-    //incrementiamo il contatore delle immagini
-    imageCount++;   
-    console.log(imageCount);
-})
+//nascondiamo il bottono pre 
+btnPre.classList.add('hide')
 
 btnNext.addEventListener('click', function(){
-    noHide[imageCount].classList.add('hide')
-    //decrementiamo il contatore delle immagini
-    imageCount--;   
-    noHide[imageCount].classList.remove('hide')
+    items[imageCount].classList.add('hide')
+//incrementiamo il contatore
+    imageCount++;
+    items[imageCount].classList.remove('hide')
+
+    btnPre.classList.remove('hide')
+
+//se il bottone next è sull' ultima immagine viene rimosso
+    if(imageCount === images.length - 1 ){
+        btnNext.classList.add('hide')
+    }
 })
+
+btnPre.addEventListener('click', function(){
+    items[imageCount].classList.add('hide')
+    //decrementiamo il contatore
+    imageCount--;
+    items[imageCount].classList.remove('hide')
+
+
+//se il bottone pre è sulla prima immagine viene rimosso
+    if(imageCount === 0 ){
+        btnPre.classList.add('hide')
+    }
+})
+
