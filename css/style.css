@@ -34,7 +34,13 @@ img{
     padding: 10px;
     text-align: center;
     top: 50%;
-    border-radius: 50%;
+    border-radius: 50%; 
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
 }
 
 .pre{

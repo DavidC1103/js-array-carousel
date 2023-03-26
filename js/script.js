@@ -12,6 +12,13 @@ const images = [
 //prendiamo il contenitore dove inserire le immagini
 const itemsWrap = document.querySelector('.items-wrapper')
 
+//prendiamo i bottoni in html
+const btnNext = document.querySelector('.next')
+const btnPre = document.querySelector('.pre')
+//creiamo un contatore per le immagini
+let imageCount = 4
+console.log(imageCount);
+
 //creiamo un ciclo per stampare le imagini in html
 for(let i = 0; i < images.length; i++){
 //salviamo il ciclo in una const
@@ -23,8 +30,7 @@ itemsWrap.innerHTML += `
 `   
 }
 
-//creiamo un contatore per le immagini
-let imageCount = 0
+
 
 //seleziono tutte le immagini con la classe 'hide'
 const noHide = document.getElementsByClassName('hide')
@@ -32,3 +38,20 @@ console.log(noHide)
 //tolgo la classe hide a tutte le immagini
 noHide[imageCount].classList.remove('hide')
 
+
+
+//aggiungiamo le function ai bottoni
+btnNext.addEventListener('click', function(){
+    noHide[imageCount].classList.add('hide')
+    console.log(btnNext);
+    //incrementiamo il contatore delle immagini
+    imageCount++;   
+    console.log(imageCount);
+})
+
+btnNext.addEventListener('click', function(){
+    noHide[imageCount].classList.add('hide')
+    //decrementiamo il contatore delle immagini
+    imageCount--;   
+    noHide[imageCount].classList.remove('hide')
+})
