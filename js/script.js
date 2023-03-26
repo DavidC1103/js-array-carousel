@@ -23,9 +23,12 @@ itemsWrap.innerHTML += `
 `   
 }
 
+//creiamo un contatore per le immagini
+let imageCount = 0
+
 //seleziono tutte le immagini con la classe 'hide'
 const noHide = document.getElementsByClassName('hide')
 console.log(noHide)
-
 //tolgo la classe hide a tutte le immagini
+noHide[imageCount].classList.remove('hide')
 
